@@ -1,0 +1,12 @@
++ Полное копирование /vtorichnaja
++ Полное копирование шаблона компонента умного фильтра /bitrix/templates/szvdom/components/bitrix/catalog.smart.filter/vtorichnaja
++ Полное копирование /fastsales
++ Полное копирование шаблона компонента каталога /bitrix/templates/szvdom/components/bitrix/catalog/vtorichnaja
++ footer дополнится несколькими блоками для вызова popup окон, инициализация скриптов для работы карусели и др.
++ Возможно потребуется в header прикрутить 1 css файл 
++ Добавлен /bitrix/components/bitrix/catalog.section/templates/vtorichnaja
++ Изменен /bitrix/components/bitrix/catalog.section/templates/special
++ Добавил ряд стилей в style.css шаблона
++ Настройка правил обработки адресов / Добавил Вторичную
++ Изменил стили feedbackwrap в style.css шаблона
++ Изменил jscript.js Закомментировал участок кода отвечающий за вывод попап окон feedback'ов и определил свое решение

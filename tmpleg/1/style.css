@@ -1,0 +1,607 @@
+.h1, .elementTitle2 .h1, .heading {
+	font-family: 'Roboto', sans-serif;
+}
+.text-center {
+	text-align: center;
+}
+.img-circle {
+	border-radius: 50%;
+}
+.elementTitle2 {
+	overflow: visible;
+	margin-bottom: 0;
+}
+.best-offer {
+	top: -10px;
+	position: relative;
+	float: right;
+}
+.elementTitle2 .h1, .h1 {
+	font-weight: 500!important;
+	font-size: 34px!important;
+	margin-top: 15px;
+	line-height: 1;
+}
+
+.objectHeadMapPlace3 {
+	height: auto;
+}
+
+.best-conditions {
+	padding: 20px 50px 20px 20px;
+}
+.best-conditions .heading {
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+.best-conditions table td {
+	padding-bottom: 20px!important;
+	padding-left: 5px!important;
+}
+.best-conditions table img {
+	float: left;
+	margin-right: 5px;
+}
+.best-conditions table p {
+	line-height: 1.2;
+    display: inherit;
+    padding: 0px 10px;
+}
+.best-conditions .buttonGreen {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	display: block;
+	width: 100%;
+	text-transform: none;
+	height: 54px;
+	line-height: 54px;
+}
+.objectProperties2, .objectProperties3 {
+    padding: 0 50px;
+	width: 960px;
+	font-family: 'Roboto', sans-serif!important;
+}
+.objectProperties2 .objectPropertiesRightSide {
+	box-sizing: border-box;
+	width: 545px;
+	padding: 40px 75px;
+	background: #f7f7f7;
+	background: -moz-linear-gradient(top,  #f7f7f7 1%, #e9f5f8 53%);
+	background: -webkit-linear-gradient(top,  #f7f7f7 1%,#e9f5f8 53%);
+	background: linear-gradient(to bottom,  #f7f7f7 1%,#e9f5f8 53%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e9f5f8',GradientType=0 );
+}
+.objectProperties2 .objectPropertiesLeftSide {
+	box-sizing: border-box;
+	width: 400px;
+	padding: 40px 75px;
+	margin-left: 10px;
+	background: #f8f6ea;
+	text-align:center;
+}
+.objectProperties2 .objectPropertiesRightSide .heading {
+	font-size: 30px;
+	font-weight: 300;
+	margin-bottom: 30px;
+}
+.objectProperties2 .objectPropertiesRightSide ul li {
+	font-size: 16px;
+	margin-bottom: 18px;
+}
+.objectProperties2 .objectPropertiesRightSide ul li:before {
+    content: '';
+    width: 18px;
+    height: 19px;
+    display: inline-block;
+    background: url(img/ul-list.svg);
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.available {
+	color: #276cb2;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 700;
+	border: 1px solid #276cb2;
+	border-radius: 2px;
+    display: inline-block;
+    padding: 3px 10px;
+	margin: 15px 0;
+}
+.objectProperties2 .objectPropertiesLeftSide .heading {
+	font-size: 36px;
+	font-weight: 300;
+	line-height: 1;
+}
+.objectProperties2 .objectPropertiesLeftSide .heading span {
+	display: block;
+	font-size: 18px;
+	font-weight: 400;
+	margin-top: 8px;
+}
+
+.objectProperties3 .h1 {
+	margin: 40px 0 30px;
+}
+.objectProperties3 .objectPropertiesLeftSide,
+.objectProperties3 .objectPropertiesRightSide {
+	width: 470px;
+	text-align: center;
+	padding: 15px 30px 30px;
+	box-sizing: border-box;
+}
+.objectProperties3 .objectPropertiesLeftSide {
+	background: #f7f7f7;
+	background: -moz-linear-gradient(top,  #f7f7f7 1%, #e8f8ea 53%);
+	background: -webkit-linear-gradient(top,  #f7f7f7 1%,#e8f8ea 53%);
+	background: linear-gradient(to bottom,  #f7f7f7 1%,#e8f8ea 53%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e8f8ea',GradientType=0 );
+	margin-left: 10px;
+	position: relative;
+}
+.objectProperties3 .objectPropertiesRightSide {
+	background: #f7f7f7;
+	background: -moz-linear-gradient(top,  #f7f7f7 1%, #e9f5f8 53%);
+	background: -webkit-linear-gradient(top,  #f7f7f7 1%,#e9f5f8 53%);
+	background: linear-gradient(to bottom,  #f7f7f7 1%,#e9f5f8 53%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e9f5f8',GradientType=0 );	
+}
+.objectProperties3 .objectPropertiesLeftSide .heading,
+.objectProperties3 .objectPropertiesRightSide .heading {
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 1.2;
+}
+.objectProperties3 .objectPropertiesRightSide .heading span {
+	display: block;
+	font-size: 18px;
+	font-weight: 400;
+	margin-top: 8px;
+	margin-bottom: 15px;
+}
+.objectProperties3 .objectPropertiesRightSide .buttonBlue {
+	display: inline-block;
+	background: #276cb2;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	text-transform: none;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif;
+}
+.objectProperties3 .objectPropertiesLeftSide p {
+	font-size: 14px;
+	line-height: 1;
+	margin: 15px 0;
+}
+.objectProperties3 .objectPropertiesLeftSide .note {
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 300;
+}
+.objectProperties3 .objectPropertiesLeftSide:before {
+	content: "";
+	width: 64px;
+	height: 64px;
+	background: #fff url(img/plus.svg) no-repeat 18px;
+	border-radius: 50%;
+	display: block;
+	position: absolute;
+	top: calc(50% - 32px);
+	left: -37px;
+}
+
+.reviewBlock {
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 300;
+	padding: 45px 0 60px;
+	line-height: 1.2;
+}
+.reviewBlock .buttonGreen {
+	font-family: 'Roboto', sans-serif;
+	width: 420px;
+	height: 60px;
+	line-height: 60px;
+	display: inline-block;
+	margin-bottom: 45px;
+	font-size: 16px;
+	text-transform: none;
+	font-weight: 400;
+}
+.reviewBlock p strong {
+	display: block;
+}
+.reviewBlock p.phone {
+	font-size: 40px;
+}
+.reviewBlock p.note {
+	color: #959595;
+}
+
+.priceTable {
+	font-family: 'Roboto', sans-serif;	
+}
+.priceTable .heading {
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.priceTable .toggle-main {
+	width: 800px;
+	float: left;
+}
+.priceTable .priceTableRight {
+	width: 255px;
+	margin-left: 4px;
+	float: left;
+	background: #f7f7f7;
+	text-align: center;
+}
+.priceTable .priceTableRight img {
+	margin: 30px 0;
+}
+.priceTable .priceTableRight .heading {
+	font-size: 26px;
+	font-weight: 300;
+}
+.priceTable .priceTableRight .heading span {
+	display: block;
+	font-size: 16px;
+	margin-top: 5px;
+}
+.priceTable .priceTableRight .buttonGreen {
+    display: inline-block;
+    margin-bottom: 20px;
+	height: 46px;
+	line-height: 46px;
+	font-size: 16px;
+	text-transform: none;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif;	
+	width: 210px;
+}
+.priceTable .titleTable .img-circle {
+	width: 66px;
+	height: 66px;
+	vertical-align: middle;
+	margin: 0 10px 0 20px;
+}
+.priceTable .priceSZVtable .priceSZVtd:nth-child(2) {
+	text-align: left;
+}
+
+.priceTable .priceSZVHeadtable .priceSZVHeadtd {
+	font-size: 12px;
+	background: #f2f5f7;
+    padding: 8px;
+	border-right: 2px solid #fff;
+}
+.priceTable .priceSZVHeadtable .priceSZVHeadtd:last-child {
+	border-right: none;
+}
+.priceTable .priceSZVtable .priceSZVtd {
+	font-size: 16px;
+	font-weight: 300;
+	padding: 5px;
+	color: #000
+}
+.priceTable .price_arrow_off {
+	background: #276cb2 url(img/dropdown.svg) no-repeat center center;
+}
+.priceTable .toggle-main .toggle-title {
+	border: none;	
+	margin: -2px 0;
+}
+.priceTable .toggle-main .toggle:nth-child(2n+1) {
+	background: #f2f5f7;
+}
+.priceTable .toggle-main .toggle-title:hover {
+	background: inherit;
+	color: inherit;
+}
+
+.new_ipoteka_calc .heading {
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 20px;	
+}
+.new_ipoteka_calc  .ipoteka-partners {
+	padding: 50px;
+}
+.new_ipoteka_calc  .ipoteka-partners .heading {
+	font-size: 20px;
+	text-align: left;
+	width: 300px;
+	line-height: 1.4;
+	float: left;
+	border-right: 1px solid #e2e5e8;
+}
+.new_ipoteka_calc  .ipoteka-partners .partners-img {
+	text-align: right;
+}
+
+.get-offers {
+	font-family: 'Roboto', sans-serif;	
+	padding: 75px 100px;
+	background: #f7f7f7;
+	background: -moz-linear-gradient(top,  #f7f7f7 1%, #e9f5f8 53%);
+	background: -webkit-linear-gradient(top,  #f7f7f7 1%,#e9f5f8 53%);
+	background: linear-gradient(to bottom,  #f7f7f7 1%,#e9f5f8 53%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e9f5f8',GradientType=0 );
+}
+.get-offers .leftSide {
+	float: left;
+	text-align:center;
+	margin-right: 60px;
+}
+.get-offers .leftSide .img-circle {
+	width: 136px;
+	height: 136px;
+}
+.get-offers .leftSide p {
+	font-size: 16px;
+	font-style: italic;
+}
+.get-offers .rightSide .heading {
+	font-size: 24px;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+.get-offers .rightSide p {
+	font-size: 14px;
+	margin-bottom: 15px;
+}
+.get-offers .rightSide .buttonGreen {
+    display: inline-block;
+    margin-bottom: 20px;
+	height: 54px;
+	line-height: 54px;
+	font-size: 16px;
+	text-transform: none;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif;	
+	width: 305px;	
+	float: left;
+}
+.get-offers .rightSide .note {
+    display: inline-block;
+	font-size: 15px;
+	color: #8d8d8d;
+    margin: 5px 0 5px 25px;
+}
+.see-also {
+	font-family: 'Roboto', sans-serif;
+	padding: 50px 40px;	
+}
+.see-also .heading {
+	font-size: 20px;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+.see-also .see-also-block {
+	text-align: center;
+	width: 240px;
+	float: left;
+	margin-right: 5px;
+	font-size: 16px;
+}
+.see-also .see-also-block  a strong {
+	display: block;
+}
+
+.elementDesc .overview {
+	font-family: 'Roboto', sans-serif;
+	color: #000;
+}
+.elementDesc .overview h1 {
+	text-transform: none;
+	font-size: 20px;
+	font-weight: 500;
+}
+.elementDesc .overview h2 {
+	text-transform: none;
+	font-size: 20px;
+	font-weight: 400;
+}
+.elementDesc .overview p {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.modalDialog {
+    position: fixed;
+	font-family: 'Roboto', sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 670px;
+    position: relative;
+    margin: 10% auto;
+    padding: 50px 90px;
+    background: #fff;
+	box-sizing: border-box;
+}
+.close {
+    color: #FFFFFF;
+    position: absolute;
+    right: 20px;
+    text-align: center;
+    top: 20px;
+    width: 16px;
+	height: 17px;
+	background: url(img/close.svg) no-repeat;
+}
+.close:hover {
+
+}
+.modalDialog .heading {
+	text-align: center;
+	font-size: 28px;
+	line-height: 1.2;
+}
+.modalDialog .heading span {
+	display: block;
+	font-size: 14px;
+	margin-top: 15px;
+}
+
+.modalDialog .popup-form {
+	width: 350px;
+	margin: 20px auto;
+}
+.popup-form .input-group {
+	position: relative;
+	margin-bottom: 10px;
+}
+.popup-form .input-group.half-group {
+	width: 49%;
+	float: left;
+}
+.popup-form .input-group.half-group:nth-child(2n-1) {
+	margin-right: 2%;
+}
+.popup-form .input-group input[type=text] {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	border: none;
+	background: #e8e8e8;
+	text-indent: 110px;
+}
+.popup-form .input-group label {
+	position: absolute;
+	font-size: 14px;
+	color: #868686;
+	width: 90px;
+	text-align: center;
+	line-height: 30px;
+	margin: 10px 0;
+	border-right: 1px solid #868686;
+}
+.popup-form .input-group .buttonGreen {
+	display: block;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	text-decoration: none;
+	text-transform: none;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif;		
+}
+.modalDialog .note {
+	text-align: center;
+	color: #606060;
+	font-size: 14px;
+	line-height: 1;
+}
+.modalFooter {
+	background: #f5f5f5;
+	margin: 0 -90px -50px;
+	padding: 15px 40px;
+}
+.form04.modalFooter img {
+	float: left;
+	margin-right: 40px;
+}
+.form05.modalFooter .item {
+	width: 33%;
+	text-align: center;
+	float: left;
+}
+.form05.modalFooter {
+	margin-top: 15px;
+}
+.form05.modalFooter .item p {
+	line-height: 1;
+	font-size: 13px;
+	color: #000;
+	padding: 0 15px;
+}
+.form04.modalFooter .txt {
+	font-size: 14px;
+	color: #000;
+	padding: 20px;
+}
+.modalDialog .circle {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	display: block;
+	border-radius: 50%;
+	text-align: center;
+	right: -130px;
+	background: #fff;
+	border: 1px solid #00b83c;
+	font-size: 14px;
+	line-height: 1.2;
+	padding: 20px 10px;
+	box-sizing: border-box;
+    top: 100px;
+    margin-right: 25px;
+}
+.modalDialog .circle:before {
+	content: url(img/arrow.png);
+	position: absolute;
+    bottom: 0;
+    left: -52px;
+}
+.modalDialog .circle .price {
+	font-size: 34px;
+	color: #00b83c;
+	border-top: 1px solid #dadada;
+	border-bottom: 1px solid #dadada;
+	padding: 10px 0;
+	margin: 15px 0;
+}
+.select-style {
+	height: 50px;
+	line-height: 50px;
+	border: none;
+	background: #e8e8e8;
+	text-indent: 65px;
+	background: #e8e8e8 url(img/dropdown-select.svg) no-repeat 90% 50%;
+}
+.select-style select {
+    padding: 5px 8px;
+    width: 65%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+.select-style select:focus {
+    outline: none;
+}
+.popup-form .input-group.half-group label {
+	position: absolute;
+	font-size: 14px;
+	color: #868686;
+	width: 60px;
+	text-align: center;
+	line-height: 30px;
+	margin: 10px 0;
+	border-right: 1px solid #868686;
+}

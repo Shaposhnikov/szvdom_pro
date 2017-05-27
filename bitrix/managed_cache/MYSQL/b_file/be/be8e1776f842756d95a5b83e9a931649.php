@@ -1,0 +1,7 @@
+<?
+if($INCLUDE_FROM_CACHE!='Y')return false;
+$datecreate = '001495883132';
+$dateexpire = '001495886732';
+$ser_content = 'a:2:{s:7:"CONTENT";s:0:"";s:4:"VARS";a:2:{i:6360;a:14:{s:2:"ID";s:4:"6360";s:11:"TIMESTAMP_X";s:19:"10.12.2015 17:37:12";s:9:"MODULE_ID";s:6:"iblock";s:6:"HEIGHT";s:3:"332";s:5:"WIDTH";s:3:"530";s:9:"FILE_SIZE";s:6:"143343";s:12:"CONTENT_TYPE";s:10:"image/jpeg";s:6:"SUBDIR";s:10:"iblock/679";s:9:"FILE_NAME";s:36:"679a09b84f4b676a6f30ad1685af4fc6.jpg";s:13:"ORIGINAL_NAME";s:36:"378674884841d8a644ea83f29dadfd46.jpg";s:11:"DESCRIPTION";s:34:"ЖК Северные высоты";s:10:"HANDLER_ID";N;s:11:"EXTERNAL_ID";s:32:"12c7a789739cf8b1ec405a403c3aebfb";s:4:"~src";b:0;}i:6362;a:14:{s:2:"ID";s:4:"6362";s:11:"TIMESTAMP_X";s:19:"10.12.2015 17:40:10";s:9:"MODULE_ID";s:6:"iblock";s:6:"HEIGHT";s:3:"332";s:5:"WIDTH";s:3:"530";s:9:"FILE_SIZE";s:6:"155075";s:12:"CONTENT_TYPE";s:10:"image/jpeg";s:6:"SUBDIR";s:10:"iblock/aec";s:9:"FILE_NAME";s:36:"aecca8e91cb9afadd01a8b9f6aad9241.jpg";s:13:"ORIGINAL_NAME";s:36:"721188cae263b69f50d56e787f002465.jpg";s:11:"DESCRIPTION";s:25:"ЖК Пулковский";s:10:"HANDLER_ID";N;s:11:"EXTERNAL_ID";s:32:"24fdb5695d30f5bad92c457110668219";s:4:"~src";b:0;}}}';
+return true;
+?>

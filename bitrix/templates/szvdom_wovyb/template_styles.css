@@ -1,0 +1,14 @@
+.specOfferMainPage > div > ul > li {
+    width: 980px;
+    overflow: hidden;
+    padding: 15px 42px;
+}
+.specOfferMainPage > div > ul > li {
+    width: 980px;
+    overflow: hidden;
+    padding: 0 42px;
+    border-bottom: 1px solid #DCDCDC;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    position: relative;
+}

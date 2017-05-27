@@ -1,0 +1,1 @@
+<? $arFilesInfo = array( 'FILES' => array("/bitrix/components/bitrix/search.suggest.input/templates/.default/script.js" => "146689822412503",), 'CUR_SEL_CNT' => '0', 'CUR_IE_CNT' => '0'); ?>

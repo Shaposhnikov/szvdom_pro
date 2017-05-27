@@ -1,0 +1,20 @@
+.watqtBig {
+    font-family: Bold!important;;
+    font-size: 32px!important;;
+    color: #FFFFFF!important;;
+    text-shadow: 1px 0 2px #000000!important;;
+}
+
+.watqtLittle {
+    font-family: Semi!important;
+    font-size: 16px!important;
+    color: #FFFFFF!important;
+    text-shadow: 1px 0 2px #000000!important;
+}
+
+.watqtLittle span {
+    line-height: 48px!important;
+    font-size: 19px!important;
+    font-family: Bold!important;
+	color: #FFFFFF!important;
+}

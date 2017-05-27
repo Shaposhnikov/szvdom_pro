@@ -1,0 +1,383 @@
+<?if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();    
+
+	$imageArray = array();
+    $arResult= $arParams["ALL"];
+
+	$APPLICATION->AddHeadString('<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>', true);
+	$xml = simplexml_load_file("http://szvdom.ru/include/xml/SiteData.xml") or die("Error: Cannot create object");
+
+	$blocks = $xml->xpath("/Ads/Blocks/Block[@id='" . $arResult["PROPERTIES"]["SECOND_ID"]["VALUE"] . "']");
+	$region = $xml->xpath("/Ads/Regions/Region[@id='" . $blocks[0]["region"] . "']");
+	$roomType = $xml->xpath("/Ads/RoomTypes/RoomType");
+	$subwayBlock = $xml->xpath("/Ads/BlockSubways/BlockSubway[@blockid='" . $arResult["PROPERTIES"]["SECOND_ID"]["VALUE"] . "']");
+	$subway = $xml->xpath("/Ads/Subways/Subway[@id='" . $subwayBlock[0]["subwayid"] . "']");
+	$rLine = $xml->xpath("/Ads/Buildings/Building[@blockid='" . $arResult["PROPERTIES"]["SECOND_ID"]["VALUE"] . "']");
+	$blockidall = $xml->xpath("/Ads/Apartments/Apartment[@blockid='" . $arResult["PROPERTIES"]["SECOND_ID"]["VALUE"]. "']");
+
+	if (!is_null($blocks[0]["latitude"])) {
+	    $shir = (float)$blocks[0]["latitude"];
+	} else {
+	    $shir = $arResult["PROPERTIES"]["LATITUDE"]["VALUE"];
+	}
+	if (!is_null($blocks[0]["longitude"])) {
+	    $dol = (float)$blocks[0]["longitude"];
+	} else {
+	    $dol = $arResult["PROPERTIES"]["LONGITUDE"]["VALUE"];
+	}
+	$mapLabel = array("X" => $dol, "Y" => $shir, "NAME" => $arResult["NAME"]);
+    foreach ($arResult["PROPERTIES"]["MULTI_IMAGES"]["VALUE"] as $key => $value) {
+        $Image = CFile::GetFileArray($value);
+        $imageArray[] = array("SRC" => $Image["SRC"], "DESCRIPTION" => $arResult["PROPERTIES"]["DESCRIPTION_MULTI_IMAGES"]["VALUE"][$key]);
+    }
+    ?>
+    <div class="objectHead">
+        <div class="objectHeadFotoGroup">
+            <? if (!empty($imageArray)) { ?>
+                <div class="fotorama" data-nav="thumbs"
+                     data-width="520"
+                     data-height="330"
+                     data-minwidth="520"
+                     data-maxwidth="520"
+                     data-minheight="330"
+                     data-maxheight="330"
+                     data-allowfullscreen="true"
+                     data-transition="crossfade"
+                     data-keyboard="true"
+                     data-arrows="true"
+                     data-click="true"
+                     data-swipe="false"
+                     data-fit="cover"
+                    >
+                    <? foreach ($imageArray as $value) {
+                        ?>
+                        <a href="<?= $value["SRC"]; ?>"> <img src="<?= $value["SRC"]; ?>" title="<?= $value["DESCRIPTION"]; ?>" alt="<?= $value["DESCRIPTION"]; ?>" width="103" height="65"/></a>
+                    <? } ?>
+                </div>
+            <? } else {
+                $imger = (string)$blocks[0]["avatar"];
+                ?>
+                <img src="/include/images/<?= $imger; ?>" title="<?= $value["DESCRIPTION"]; ?>" alt="<?= $value["DESCRIPTION"]; ?>" width="520" height="400"/>
+                <?
+            } ?>
+            <? if (!empty($arResult["PROPERTIES"]["RED_LABEL_MARK"]["VALUE"])) { ?>
+                <div class="redLabelMark"><?= $arResult["PROPERTIES"]["RED_LABEL_MARK"]["VALUE"]; ?></div>
+            <?
+            } ?>
+        </div>
+        <div class="objectHeadMapPlace">
+
+    <script type="text/javascript">
+        var headMap;
+        ymaps.ready(init);
+        function init() {
+            var headMap = new ymaps.Map("objectHeadMap", {
+                    center: [<?=$mapLabel["Y"]?>, <?=$mapLabel["X"]?>],
+                    zoom: 15,
+                    controls: ['smallMapDefaultSet']
+                }),
+                myPlacemark = new ymaps.Placemark(headMap.getCenter(), {
+                    hintContent: '<?=$mapLabel["NAME"]?>'
+                }, {
+                    iconLayout: 'default#image',
+                    iconImageHref: '/bitrix/templates/szvdom/images/markII.png',
+                    iconImageSize: [90, 67],
+                    iconImageOffset: [-3, -42]
+                });
+            headMap.geoObjects.add(myPlacemark);
+        }
+
+    </script>
+	<div id="objectHeadMap" style="width: 526px;height: 400px;"></div>
+            <? if (!empty($arResult["PROPERTIES"]["OBJECTS_FOR_THIS"]["VALUE"]) || !empty($arResult["PROPERTIES"]["MAP_OBJECTS"]["VALUE"]) || !empty($arResult["PROPERTIES"]["OBJECT_SELECTIONS"]["VALUE"])) {
+                ?>
+                <div class="psevdoblue" style=""><a href="<?= $arResult['DETAIL_PAGE_URL'] . "pohozhie-obekty/" ?>" style="color: #FFFFFF;">Похожие объекты</a></div>
+                <?
+            } ?>
+        </div>
+    </div>
+    <div class="propblcs"></div>
+    <div class="objectProperties">
+        <div class="objectPropertiesRightSide">
+            <p class="title">Характеристики</p>
+            <table>
+                <tbody>
+                <tr>
+                    <td width="139">Район :</td>
+                    <td width="353"><?
+                        if (!empty($arResult["PROPERTIES"]["REGION"]["VALUE"])) {
+                            $str = "";
+                            foreach ($arResult["PROPERTIES"]["REGION"]["VALUE"] as $key => $value) {
+                                if ($key != (count($arResult["PROPERTIES"]["REGION"]["VALUE"]) - 1)) {
+                                    $str .= $value . ", ";
+                                } else {
+                                    $str .= $value;
+                                }
+
+                            }
+                            echo $str;
+                        } else {
+                            echo $region[0]["name"];
+                        } ?></td>
+                </tr>
+                <tr>
+                    <td>Улица :</td>
+                    <td><?= (!empty($arResult["PROPERTIES"]["ADDRESS"]["VALUE"])) ? $arResult["PROPERTIES"]["ADDRESS"]["VALUE"] : $blocks[0]["address"] ?></td>
+                </tr>
+                <tr>
+                    <td>Метро :</td>
+                    <td><? if (!empty($arResult["PROPERTIES"]["SUBWAYS"]["VALUE"])) {
+                            $str = "";
+                            foreach ($arResult["PROPERTIES"]["SUBWAYS"]["VALUE"] as $key => $value) {
+                                if ($key != (count($arResult["PROPERTIES"]["SUBWAYS"]["VALUE"]) - 1)) {
+                                    $str .= $value . ", ";
+                                } else {
+                                    $str .= $value;
+                                }
+
+                            }
+                            echo $str;
+                        } else {
+                            echo $subway[0]["name"];
+                        } ?></td>
+                </tr>
+
+
+                <? if (!empty($arResult["PROPERTIES"]["LINE"]["VALUE"])) {
+                    $str = "<tr>";
+                    $str .= "<td>Срок сдачи :</td>";
+                    $str .= "<td>";
+                    foreach ($arResult["PROPERTIES"]["LINE"]["VALUE"] as $key => $value) {
+                        if ($key != (count($arResult["PROPERTIES"]["LINE"]["VALUE"]) - 1)) {
+                            $str .= $value . "<br/> ";
+                        } else {
+                            $str .= $value;
+                        }
+                    }
+                    $str .= "</td>";
+                    $str .= "</tr>";
+                    echo $str;
+                } elseif (!empty($rLine)) {
+                    foreach ($rLine as $value) {
+                        $ar_donnn[] = (string)$rLine[0]["line"];
+                    }
+                    $arLine = array_unique($ar_donnn);
+                    $str = "<tr>";
+                    $str .= "<td>Срок сдачи :</td>";
+                    $str .= "<td>";
+                    foreach ($arLine as $key => $value) {
+                        if ($key != (count($arResult["PROPERTIES"]["LINE"]["VALUE"]) - 1)) {
+                            $str .= $value . ", ";
+                        } else {
+                            $str .= $value;
+                        }
+
+                    }
+                    $str .= "</td>";
+                    $str .= "</tr>";
+                    echo $str;
+                } ?>
+
+                <? if (!empty($arResult["PROPERTIES"]["PATH_DESCRIPTION"]["VALUE"])) {
+                    ?>
+                    <tr>
+                        <td>Удалённость</td>
+                        <td><?= $arResult["PROPERTIES"]["PATH_DESCRIPTION"]["VALUE"]; ?></td>
+                    </tr>
+                    <?
+                } ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="objectPropertiesLeftSide">
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#scrollbarY').tinyscrollbar({wheel: 40, scroll: true});
+                });
+                $(document).ready(function () {
+                    $('#scrollbarY2').tinyscrollbar({wheel: 40, scroll: true});
+                });
+            </script>
+            <? if (!empty($arResult["PROPERTIES"]["BENEFITS_MAIN"]["VALUE"])) {
+                ?>
+                <p class="title">Преимущества</p>
+                <div id="scrollbarY">
+                    <div class="scrollbar">
+                        <div class="track">
+                            <div class="thumb">
+                                <div class="end"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="viewport" style="width: 480px;">
+                        <div class="overview">
+                            <ul>
+                                <? foreach ($arResult["PROPERTIES"]["BENEFITS_MAIN"]["VALUE"] as $str) {
+                                    echo "<li>" . $str . "</li>";
+                                } ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <?
+            } ?>
+        </div>
+    </div>
+    <?
+
+foreach($rLine as $item) {
+	$id = (string)$item[0]['id'];
+	$corp = (string)$item[0]['corp'];
+	$floors = (string)$item[0]['floors'];
+	$endingperiod = (string)$item[0]['endingperiod'];
+	$new_building[$id] = array("corp" => $corp, "floors" => $floors, "endingperiod" => $endingperiod);
+}
+
+$json = json_encode($blockidall);
+$arrayXml = json_decode($json,TRUE);
+$json2 = json_encode($blocks);
+$arrayXml2 = json_decode($json2,TRUE);
+foreach ($arrayXml as $key => $value) {
+	if ($value["@attributes"]["rooms"] == 25){
+		continue;
+	}
+	$blockIdDone[] = $value["@attributes"];
+}
+$ourBlock = $arrayXml2[0]["@attributes"];
+
+$skitchenArray = array();
+$squareArray = array();
+$pricesArray = array();
+$arResult["BLOCK"] = $ourBlock;
+foreach ($blockIdDone as $key => $value) {
+	foreach ($roomType as $tkey => $type) {
+		if ($value["rooms"] == (string)$type[0]["id"]){
+			$blockIdDone[$key]["roomtype"] = (string)$type[0]["name"];
+		}
+	}
+	$b_id = (string)$value['buildingid'];
+	$blockIdDone[$key]['endingperiod'] = $new_building[$b_id]['endingperiod'];
+	$blockIdDone[$key]['corp'] = $new_building[$b_id]['corp'];
+	$blockIdDone[$key]['floors'] = $new_building[$b_id]['floors'];
+	$skitchenArray[] = $value["skitchen"];
+	$squareArray[] = $value["stotal"];
+	$pricesArray[] = $value["baseflatcost"];
+}
+if (!empty($arParams["ALL"]["ID"])){
+    $arFilter = Array("IBLOCK_ID"=> 6, "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y","PROPERTY_BUILD" => $arParams["ALL"]["ID"]);
+    $res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+    $atFormat = array();
+    while($ob = $res->GetNextElement())
+    {
+        $arFields = $ob->GetFields();
+        $prop = $ob->GetProperties();
+        $atFormat = array(
+            "id" => $prop["ID_FOR_REAL"]["VALUE"],
+            "stotal" => $prop["SQUARE"]["VALUE"],
+            "rooms" => $prop["ROOM_AMOUNT"]["VALUE"],
+            "skitchen" => $prop["SQUARE_KITCHEN"]["VALUE"],
+            "baseflatcost" => $prop["PRICE"]["VALUE"],
+            "corp" => $prop["BUILD_PART"]["VALUE"],
+            "sbalcony" => $prop["SQUARE_BALCONY"]["VALUE"],
+            "scorridor" => $prop["SQUARE_HALL"]["VALUE"],
+            "cwatercloset" => $prop["SQUARE_WC"]["VALUE"],
+            "decoration" => $prop["FINISHING"]["VALUE"],
+            "flatplan" => $img,
+            "height" => $prop["CEILING_HEIGHT"]["VALUE"],
+            "flatfloor" => $prop["FLOAT_NUM"]["VALUE"],
+            "sroom" => $prop["LIVING_AREA"]["VALUE"],
+            "floors" =>  $floor ,
+            "buildingplace" => array(
+                "title" => $ourBlock["title"],
+            ),
+            "from_iblock" => "Y"
+        );
+
+        $blockIdDone[] = $atFormat;
+    }
+}
+$bufLabel =array();
+foreach ($blockIdDone as $value) {
+	$bufLabel[] = $value["rooms"]; 
+}
+$arMirror = array_unique($bufLabel);
+$arLabel = array();
+foreach ($blockIdDone as $value) {
+	$arLabel[$value["rooms"]]["PRICE_BASIC"][] = $value["baseflatcost"];
+    $query = "";
+    if ($value["rooms"] == "4"){
+        $query .= "?arrFilter_5_2366072709=Y&arrFilter_2_MIN=&arrFilter_2_MAX=&arrFilter_1_MIN=&arrFilter_1_MAX=&arrFilter_66_MIN=&arrFilter_66_MAX=&set_filter=Показать+варианты";
+    }elseif ($value["rooms"] == "3" || $value["rooms"] == "23"){
+        $query .= "?arrFilter_5_4194326291=Y&arrFilter_2_MIN=&arrFilter_2_MAX=&arrFilter_1_MIN=&arrFilter_1_MAX=&arrFilter_66_MIN=&arrFilter_66_MAX=&set_filter=Показать+варианты";
+    }elseif ($value["rooms"] == "2" || $value["rooms"] == "22"){
+        $query .= "?arrFilter_5_1790921346=Y&arrFilter_2_MIN=&arrFilter_2_MAX=&arrFilter_1_MIN=&arrFilter_1_MAX=&arrFilter_66_MIN=&arrFilter_66_MAX=&set_filter=Показать+варианты";
+    }elseif ($value["rooms"] == "1"){
+        $query .= "?arrFilter_5_498629140=Y&arrFilter_2_MIN=&arrFilter_2_MAX=&arrFilter_1_MIN=&arrFilter_1_MAX=&arrFilter_66_MIN=&arrFilter_66_MAX=&set_filter=Показать+варианты";
+    }elseif ($value["rooms"] == "0"){
+        $query .= "?arrFilter_5_2226203566=Y&arrFilter_2_MIN=&arrFilter_2_MAX=&arrFilter_1_MIN=&arrFilter_1_MAX=&arrFilter_66_MIN=&arrFilter_66_MAX=&set_filter=Показать+варианты";
+    }
+	$arLabel[$value["rooms"]]["PRICE_PER_METER"][] = round(($value["baseflatcost"]/$value["stotal"]),0);
+    if (!empty($value["flatcostwithdiscounts"])) {
+        $arLabel[$value["rooms"]]["PRICE_DISCOUNT"][] = $value["flatcostwithdiscounts"];
+    }
+	$arLabel[$value["rooms"]]["SQUARE"][] = $value["stotal"];
+	if (!isset($arLabel[$value["rooms"]]["COUNT"])){
+		$arLabel[$value["rooms"]]["COUNT"] = 1;
+	}else{
+		$arLabel[$value["rooms"]]["COUNT"]++;
+	}
+    if (!empty($value["flatplan"])) {
+        $arLabel[$value["rooms"]]["IMAGE"] = $value["flatplan"];
+    }
+    if (!empty($value["rooms"])) {
+        $arLabel[$value["rooms"]]["LABEL"] = $value["rooms"];
+    }
+    if (!empty($value["roomtype"])){
+        $arLabel[$value["rooms"]]["LABEL_TYPE"] = $value["roomtype"];
+    }
+    if ($value["from_iblock"] == "Y"){
+		$arLabel[$value["rooms"]]["LABEL_TYPE"] = $value["rooms"];
+    }
+    $arLabel[$value["rooms"]]["QUERY_STRING"] = $query;
+}
+ksort($arLabel);
+
+if (!empty($arLabel)){
+?>
+<div class="summChar">
+    <p class="elementTitleInner">Квартиры и цены</p>
+</div>
+<table class="summCharTable">
+	<tbody>
+		<tr class="boldText titleTable">
+            <th width="38"></th>
+			<th width="170">Кол-во комнат</th>
+			<th width="170">Площадь</th>
+			<?/*<th width="230">Цена за метр квадратный</th>
+			<th width="160">Базовая цена, руб.</th>*/?>
+			<th width="180">Со скидкой, руб.</th>
+			<th width="145">Квартиры</th>
+			<th width="145">Планировка</th>
+			<th width="170">В продаже, шт.</th>
+            <th width="38"></th>
+		</tr>
+		<?foreach ($arLabel as $key => $value) {?>
+			<tr <?/*onclick="location.href = '<?=$arParams["REDIRECT_URL"];?>tseny-na-kvartiry/<?=$value["QUERY_STRING"];?>'"*/?>>
+                <td></td>
+				<td><?=$value["LABEL_TYPE"];?></td>
+				<td> от <?=min($value["SQUARE"]);?></td>
+				<?/*<td > от <?=number_format( min($value["PRICE_PER_METER"]), 0, ',', ' ');?></td>
+				<td> от <?=number_format(min($value["PRICE_BASIC"]), 0, ',', ' ');?></td>*/?>
+				<td><?/* от <?=number_format(min($value["PRICE_DISCOUNT"]), 0, ',', ' ') ;?>*/?><a href="<?=$arParams["REDIRECT_URL"];?>tseny-na-kvartiry/<?=$value["QUERY_STRING"];?>" onclick="yaCounter21785827.reachGoal('know_price_click'); return true;" data-formsend="know_price_send" data-who="price_feedback" >Узнать цены</a></td>
+				<td><a href="<?=$arParams["REDIRECT_URL"];?>tseny-na-kvartiry/<?=$value["QUERY_STRING"];?>">Посмотреть</a></td>
+				<td><a href="<?=$arParams["REDIRECT_URL"];?>planirovki/<?=$value["QUERY_STRING"];?>">Посмотреть</a></td>
+				<td><a href="<?=$arParams["REDIRECT_URL"];?>tseny-na-kvartiry/<?=$value["QUERY_STRING"];?>"><?=$value["COUNT"];?></a></td>
+                <td></td>
+			</tr>
+		<?}?>
+	</tbody>
+</table>
+<div class="summChar">
+    <a class="pseudoButton" href="<?=$arParams["REDIRECT_URL"];?>tseny-na-kvartiry/">Посмотреть все квартиры</a>
+</div>
+<?}?>
+
